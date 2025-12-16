@@ -1,4 +1,6 @@
 Budgeting tool:
+    ToThink:
+        how to handle variable statements
     Looks at how much each expense is, how much you need each month
     Lets you add and remove expenses easily
         Fixed Expenses + Variable Expenses

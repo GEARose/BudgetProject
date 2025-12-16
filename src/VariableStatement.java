@@ -4,6 +4,7 @@
 public class VariableStatement extends Statement {
     private double low;
     private double high;
+    private double average;
 
     /**
      * Creates a new VariableStatement object with a description
@@ -17,7 +18,7 @@ public class VariableStatement extends Statement {
     public VariableStatement(boolean type, String name, String desc, double period,
                             double low, double high) {
         isIncome=type; this.name=name; description=desc; this.period=period;
-        this.high=high; this.low=low;
+        this.high=high; this.low=low; average=(low+high)/2.0;
     }
     /**
      * Creates a new VariableStatement object without a description
@@ -41,7 +42,9 @@ public class VariableStatement extends Statement {
 
     public double getLow() {return low;}
     public double getHigh() {return high;}
+    public double getAverage() {return average;}
 
     public void setLow(double low) {this.low=low;}
     public void setHigh(double high) {this.high=high;}
+    public void setAverage(double average) {this.average=average;}
 }

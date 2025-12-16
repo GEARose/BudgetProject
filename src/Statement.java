@@ -1,5 +1,5 @@
 /**
- * An abstract class for income/expense statements
+ * An abstract class for income/expense statements.
  * FixedStatement and VariableStatement inherit from this class
  */
 public abstract class Statement {
