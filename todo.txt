@@ -4,11 +4,11 @@ Budgeting tool
 				Fixed Expenses + Variable Expenses
 			Classes:
 				abstract class Statement
-					public static final day/week/month/quarter/year = ...;
+					public static final double day/week/month/quarter/year = ...;
 					Boolean to determine whether income or expense
 					Name
 					Descripton
-					int Period					
+					double Period					
 				class FixedStatement extends Statement
 					amount
 					Constructor that lets you pass in a FixedStatement object and make a copy
