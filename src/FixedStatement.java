@@ -1,0 +1,39 @@
+/** 
+ * A source of income or an expense with a fixed (non-variable) amount
+ */
+public class FixedStatement extends Statement {
+    private double amount;
+
+    /**
+     * Creates a new FixedStatement object with a description
+     * @param type - true if income, false if expense
+     * @param name - name for the statement
+     * @param desc - description for the statement
+     * @param period - period in days
+     * @param amount - dollar amount paid per period
+     */
+    public FixedStatement(boolean type, String name, String desc, double period, double amount) {
+        isIncome=type; this.name=name; description=desc;
+        this.period=period; this.amount=amount;
+    }
+    /**
+     * Creates a new FixedStatement object without a descripton
+     * @param type - true if income, false if expense
+     * @param name - name for the statement
+     * @param period - period in days
+     * @param amount - dollar amount paid per period
+     */
+    public FixedStatement(boolean type, String name, double period, double amount) {
+        this(type,name,"",period, amount);
+    }
+    /**
+     * Creates a new FixedStatement object by copying another
+     * @param other - the object to be copied
+     */
+    public FixedStatement(FixedStatement other) {
+        this(other.isIncome,other.name,other.description,other.period,other.amount);
+    }
+    
+    
+
+}
