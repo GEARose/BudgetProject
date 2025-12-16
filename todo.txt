@@ -1,27 +1,18 @@
-Budgeting tool
-			Looks at how much each expense is, how much you need each month
-			Lets you add and remove expenses easily
-				Fixed Expenses + Variable Expenses
-			Classes:
-				abstract class Statement
-					public static final double day/week/month/quarter/year = ...;
-					Boolean to determine whether income or expense
-					Name
-					Descripton
-					double Period					
-				class FixedStatement extends Statement
-					amount
-					Constructor that lets you pass in a FixedStatement object and make a copy
-				class VariableStatement extends Statement
-					lower limit, upper limit
-					Constructor that lets you pass in a Variable Statement object and make a copy
-				class Budget
-					Constructor that lets you pass in a Budget object and make a copy
-					List<Statement> statements
-					double net()
-					Analysis methods
-						percents
-						Show how much a Statement is over different periods (e.g.,weeks)
-			Driver:
-				Save/Load features
-				"What-If" mode that doesn't save changes
+Budgeting tool:
+    Looks at how much each expense is, how much you need each month
+    Lets you add and remove expenses easily
+        Fixed Expenses + Variable Expenses
+    Classes:
+        class VariableStatement extends Statement
+            lower limit, upper limit
+            Constructor that lets you pass in a Variable Statement object and make a copy
+        class Budget
+            Constructor that lets you pass in a Budget object and make a copy
+            List<Statement> statements
+            double net()
+            Analysis methods
+                percents
+                Show how much a Statement is over different periods (e.g.,weeks)
+    Driver:
+        Save/Load features
+        "What-If" mode that doesn't save changes

@@ -35,7 +35,7 @@ public class FixedStatement extends Statement {
         this(other.isIncome,other.name,other.description,other.period,other.amount);
     }
     
-    /** @return the amount spent each period */
     public double getAmount() {return amount;}
-
+    public void setAmount(double amount) {this.amount=amount;}
+    
 }
