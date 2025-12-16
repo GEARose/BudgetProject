@@ -19,5 +19,17 @@ public abstract class Statement {
     public String getName() {return name;}
     public String getDescription() {return description;}
     public double getPeriod() {return period;}
-
+    /** 
+     * @param isIncome - true if the statement is income, false if it is an expense
+     * */
+    public void setType(boolean isIncome) {this.isIncome=isIncome;}
+    public void setName(String name) {this.name=name;}
+    public void setDescription(String desc) {description=desc;}
+    /**
+     * Changes the period for this statement
+     * @param period - amount of time (in days) between each payment
+     * Can use Statement.YEAR, Statement.QUARTER, Statement.MONTH,
+     * Statement.WEEK, Statement.DAY, or just the number of days. 
+     */
+    public void setPeriod(double period) {this.period=period;}
 }

@@ -34,6 +34,6 @@ public class FixedStatement extends Statement {
         this(other.isIncome,other.name,other.description,other.period,other.amount);
     }
     
+    public double getAmount() {return amount;}
     
-
 }
