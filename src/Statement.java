@@ -20,8 +20,9 @@ public abstract class Statement {
     public String getDescription() {return description;}
     public double getPeriod() {return period;}
     /** 
+     * Changes the statement's type
      * @param isIncome - true if the statement is income, false if it is an expense
-     * */
+     */
     public void setType(boolean isIncome) {this.isIncome=isIncome;}
     public void setName(String name) {this.name=name;}
     public void setDescription(String desc) {description=desc;}

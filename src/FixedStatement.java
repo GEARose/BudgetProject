@@ -2,6 +2,7 @@
  * A source of income or an expense with a fixed (non-variable) amount
  */
 public class FixedStatement extends Statement {
+    /** The fixed dollar amount spent/recieved each period */
     private double amount;
 
     /**
@@ -34,6 +35,7 @@ public class FixedStatement extends Statement {
         this(other.isIncome,other.name,other.description,other.period,other.amount);
     }
     
+    /** @return the amount spent each period */
     public double getAmount() {return amount;}
-    
+
 }
