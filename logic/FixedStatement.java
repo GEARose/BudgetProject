@@ -37,5 +37,16 @@ public class FixedStatement extends Statement {
     
     public double getAmount() {return amount;}
     public void setAmount(double amount) {this.amount=amount;}
-    
+
+    @Override
+    /**
+     * Creates a readable representation of the Statement
+     * @return a formatted String
+     */
+    public String toString() {
+        return "\n"+name+":\n"
+        +"\t$"+amount
+        +"\tevery "+period+" days"
+        +"\t"+description;
+    }
 }

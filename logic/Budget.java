@@ -5,20 +5,23 @@ import java.util.ArrayList;
  * Includes utility methods.
  */
 public class Budget {
+    private String name;
     private List<Statement> statements;
 
     /**
      * Creates a new empty Budget object
+     * @param name - the budget name
      */
-    public Budget() {
+    public Budget(String name) {
         statements = new ArrayList<>();
+        this.name=name;
     }
     /**
      * Creates a new Budget object by copying another
      * @param other - the object to be copied
      */
     public Budget(Budget other) {
-        this();
+        this(other.name);
         for (Statement e: other.statements) {
             Statement copy;
             if (e instanceof FixedStatement eF) {
@@ -48,6 +51,21 @@ public class Budget {
                 if (eV.isIncome) result+= eV.getAverage();
                 else result-= eV.getAverage();
             }
+        }
+        return result;
+    }
+
+    public String getName() {return name;}
+
+    @Override
+    /**
+     * Creates a readable representation of the Budget
+     * @return a formatted String
+     */
+    public String toString() {
+        String result= name+"::";
+        for (Statement e: statements) {
+            result+=e.toString();
         }
         return result;
     }

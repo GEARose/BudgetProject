@@ -47,4 +47,16 @@ public class VariableStatement extends Statement {
     public void setLow(double low) {this.low=low;}
     public void setHigh(double high) {this.high=high;}
     public void setAverage(double average) {this.average=average;}
+
+    @Override
+    /**
+     * Creates a readable representation of the Statement
+     * @return a formatted String
+     */
+    public String toString() {
+        return "\n"+name+":\n"
+        +"\t$"+low+"-"+high
+        +"\tevery "+period+" days"
+        +"\t"+description;
+    }
 }
