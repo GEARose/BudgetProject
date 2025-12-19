@@ -8,6 +8,7 @@ public class testDriver {
         Statement rent = new FixedStatement(false,"rent",Statement.MONTH,800);
         Statement phone = new FixedStatement(false,"Phone bill",Statement.MONTH,60);
 
+        // Budget
         Budget b1 = new Budget("Budget1");
         b1.addStatement(workCheck); b1.addStatement(sideWork);
         b1.addStatement(rent); b1.addStatement(phone);
