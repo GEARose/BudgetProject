@@ -97,6 +97,102 @@ public class Budget {
         }
         return result;
     }
+    /**
+     * Calculates the total income, using lower bound amount for variable statements
+     * @return the total dollar amount
+     */
+    public double inLow() {
+        double result = 0;
+        for (Statement e: statements) {
+            if (e.isIncome && e instanceof FixedStatement eF) {
+                result+=eF.getAmount();
+            }
+            if (e.isIncome && e instanceof VariableStatement eV) {
+                result+=eV.getLow();
+            }
+        }
+        return result;
+    }
+    /**
+     * Calculates the total income, using average amount for variable statements
+     * @return the total dollar amount
+     */
+    public double inAverage() {
+        double result = 0;
+        for (Statement e: statements) {
+            if (e.isIncome && e instanceof FixedStatement eF) {
+                result+=eF.getAmount();
+            }
+            if (e.isIncome && e instanceof VariableStatement eV) {
+                result+=eV.getAverage();
+            }
+        }
+        return result;
+    }
+    /**
+     * Calculates the total income, using upper bound amount for variable statements
+     * @return the total dollar amount
+     */
+    public double inHigh() {
+        double result = 0;
+        for (Statement e: statements) {
+            if (e.isIncome && e instanceof FixedStatement eF) {
+                result+=eF.getAmount();
+            }
+            if (e.isIncome && e instanceof VariableStatement eV) {
+                result+=eV.getHigh();
+            }
+        }
+        return result;
+    }
+    /**
+     * Calculates the total expenses, using lower bound amount for variable statements
+     * @return the total dollar amount
+     */
+    public double outLow() {
+        double result = 0;
+        for (Statement e: statements) {
+            if (!e.isIncome && e instanceof FixedStatement eF) {
+                result+=eF.getAmount();
+            }
+            if (!e.isIncome && e instanceof VariableStatement eV) {
+                result+=eV.getLow();
+            }
+        }
+        return result;
+    }
+    /**
+     * Calculates the total expenses, using average amount for variable statements
+     * @return the total dollar amount
+     */
+    public double outAverage() {
+        double result = 0;
+        for (Statement e: statements) {
+            if (!e.isIncome && e instanceof FixedStatement eF) {
+                result+=eF.getAmount();
+            }
+            if (!e.isIncome && e instanceof VariableStatement eV) {
+                result+=eV.getAverage();
+            }
+        }
+        return result;
+    }
+    /**
+     * Calculates the total expenses, using upper bound amount for variable statements
+     * @return the total dollar amount
+     */
+    public double outHigh() {
+        double result = 0;
+        for (Statement e: statements) {
+            if (!e.isIncome && e instanceof FixedStatement eF) {
+                result+=eF.getAmount();
+            }
+            if (!e.isIncome && e instanceof VariableStatement eV) {
+                result+=eV.getHigh();
+            }
+        }
+        return result;
+    }
 
     public String getName() {return name;}
 
