@@ -7,6 +7,7 @@ public abstract class Statement {
     public static final double YEAR = 365.25;
     public static final double QUARTER = 365.25/4.0;
     public static final double MONTH = 30.4375;
+    public static final double BIWEEKLY = 14.0;
     public static final double WEEK = 7.0;
     public static final double DAY = 1.0;
 

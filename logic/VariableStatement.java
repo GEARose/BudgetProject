@@ -30,7 +30,7 @@ public class VariableStatement extends Statement {
      */
     public VariableStatement(boolean type, String name, double period,
                             double low, double high) {
-        this(type,name,"",period,low,high);
+        this(type,name,"[no description]",period,low,high);
     }
     /**
      * Creates a new VariableStatement object by copying another
@@ -54,9 +54,11 @@ public class VariableStatement extends Statement {
      * @return a formatted String
      */
     public String toString() {
-        return "\n"+name+":\n"
-        +"\t$"+low+"-"+high
-        +"\tevery "+period+" days"
+        String sign = " - ";
+        if (isIncome) sign=" + ";
+        return "\n"+sign+name+":\n"
+        +"\t$"+low+"-"+high+"\n"
+        +"\tevery "+period+" days"+"\n"
         +"\t"+description;
     }
 }

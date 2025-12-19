@@ -25,7 +25,7 @@ public class FixedStatement extends Statement {
      * @param amount - dollar amount paid per period
      */
     public FixedStatement(boolean type, String name, double period, double amount) {
-        this(type,name,"",period, amount);
+        this(type,name,"[no description]",period, amount);
     }
     /**
      * Creates a new FixedStatement object by copying another
@@ -44,9 +44,11 @@ public class FixedStatement extends Statement {
      * @return a formatted String
      */
     public String toString() {
-        return "\n"+name+":\n"
-        +"\t$"+amount
-        +"\tevery "+period+" days"
+        String sign = " - ";
+        if (isIncome) sign=" + ";
+        return "\n"+sign+name+":\n"
+        +"\t$"+amount+"\n"
+        +"\tevery "+period+" days"+"\n"
         +"\t"+description;
     }
 }

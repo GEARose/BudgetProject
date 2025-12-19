@@ -36,6 +36,11 @@ public class Budget {
     }
 
     /**
+     * Adds a statement to the budget
+     * @param s - the statement to be added
+     */
+    public void addStatement(Statement s) {statements.add(s);}
+    /**
      * Calculates the net (Income-Expenses), using average amount for variable statements.  
      * @return the net dollar amount
      */
@@ -63,7 +68,9 @@ public class Budget {
      * @return a formatted String
      */
     public String toString() {
-        String result= name+"::";
+        String result = "\n===================================================\n";
+        result+=name+"::\n";
+        result+="-----------------------------------";
         for (Statement e: statements) {
             result+=e.toString();
         }
