@@ -41,10 +41,29 @@ public class Budget {
      */
     public void addStatement(Statement s) {statements.add(s);}
     /**
+     * Calculates the net (Income-Expenses), using lower bound amount for variable statements.  
+     * @return the net dollar amount
+     */
+    public double netLow() {
+        double result=0;
+        for (Statement e: statements) {
+            if (e instanceof FixedStatement eF) {
+                if (eF.isIncome) result+= eF.getAmount();
+                else result-= eF.getAmount();
+            }
+            else {
+                VariableStatement eV = (VariableStatement) e;
+                if (eV.isIncome) result+= eV.getLow();
+                else result-= eV.getLow();
+            }
+        }
+        return result;
+    }
+    /**
      * Calculates the net (Income-Expenses), using average amount for variable statements.  
      * @return the net dollar amount
      */
-    public double net() {
+    public double netAverage() {
         double result=0;
         for (Statement e: statements) {
             if (e instanceof FixedStatement eF) {
@@ -55,6 +74,25 @@ public class Budget {
                 VariableStatement eV = (VariableStatement) e;
                 if (eV.isIncome) result+= eV.getAverage();
                 else result-= eV.getAverage();
+            }
+        }
+        return result;
+    }
+    /**
+     * Calculates the net (Income-Expenses), using upper bound amount for variable statements.  
+     * @return the net dollar amount
+     */
+    public double netHigh() {
+        double result=0;
+        for (Statement e: statements) {
+            if (e instanceof FixedStatement eF) {
+                if (eF.isIncome) result+= eF.getAmount();
+                else result-= eF.getAmount();
+            }
+            else {
+                VariableStatement eV = (VariableStatement) e;
+                if (eV.isIncome) result+= eV.getHigh();
+                else result-= eV.getHigh();
             }
         }
         return result;
