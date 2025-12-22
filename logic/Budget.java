@@ -40,6 +40,29 @@ public class Budget {
      * @param s - the statement to be added
      */
     public void add(Statement s) {statements.add(s);}
+    
+    /**
+     * Creates a new Budget object that adjusts all of the statements
+     * to the passed in period. ex: $200/month --> $2400/year
+     * @param period - the period of the statements in the new budget
+     * @return a new budget in which all statements have the given period
+     */
+    public Budget normal(double period) {
+        Budget result = new Budget(name+"-Normal");
+        for (Statement e: statements) {
+            double ratio = period / e.getPeriod();
+            if (e instanceof FixedStatement eF) {
+                result.add(new FixedStatement(eF.isIncome(),eF.getName(),
+                    eF.getDescription(),period,ratio*eF.getAmount()));
+            }
+            else if (e instanceof VariableStatement eV) {
+                result.add(new VariableStatement(eV.isIncome,eV.getName(),
+                    eV.getDescription(),period,ratio*eV.getLow(),ratio*eV.getHigh()));
+            }
+            else throw new IllegalArgumentException("Something went wrong.");
+        }
+        return result;
+    }
     /**
      * Calculates the net (Income-Expenses), using lower bound amount for variable statements.  
      * @return the net dollar amount
