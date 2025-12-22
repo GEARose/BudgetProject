@@ -1,3 +1,4 @@
+package src.logic;
 /** 
  * A source of income or an expense with a variable (non-fixed) amount
  */

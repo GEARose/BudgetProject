@@ -1,3 +1,6 @@
+package src;
+import src.logic.*;
+
 public class testDriver {
     public static void main(String args[]) {
         // Income
@@ -14,5 +17,6 @@ public class testDriver {
         b1.add(rent); b1.add(phone);
         
         System.out.print(b1);
+        System.out.print(b1.normal(Statement.MONTH));
     }
 }

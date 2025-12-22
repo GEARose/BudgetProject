@@ -1,3 +1,4 @@
+package src.logic;
 /**
  * An abstract class for income/expense statements.
  * FixedStatement and VariableStatement inherit from this class
