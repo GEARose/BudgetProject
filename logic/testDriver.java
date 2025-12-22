@@ -10,8 +10,8 @@ public class testDriver {
 
         // Budget
         Budget b1 = new Budget("Budget1");
-        b1.addStatement(workCheck); b1.addStatement(sideWork);
-        b1.addStatement(rent); b1.addStatement(phone);
+        b1.add(workCheck); b1.add(sideWork);
+        b1.add(rent); b1.add(phone);
         
         System.out.print(b1);
     }

@@ -39,7 +39,7 @@ public class Budget {
      * Adds a statement to the budget
      * @param s - the statement to be added
      */
-    public void addStatement(Statement s) {statements.add(s);}
+    public void add(Statement s) {statements.add(s);}
     /**
      * Calculates the net (Income-Expenses), using lower bound amount for variable statements.  
      * @return the net dollar amount
@@ -63,21 +63,7 @@ public class Budget {
      * Calculates the net (Income-Expenses), using average amount for variable statements.  
      * @return the net dollar amount
      */
-    public double netAverage() {
-        double result=0;
-        for (Statement e: statements) {
-            if (e instanceof FixedStatement eF) {
-                if (eF.isIncome) result+= eF.getAmount();
-                else result-= eF.getAmount();
-            }
-            else {
-                VariableStatement eV = (VariableStatement) e;
-                if (eV.isIncome) result+= eV.getAverage();
-                else result-= eV.getAverage();
-            }
-        }
-        return result;
-    }
+    public double netAverage() {return inAverage()-outAverage();}
     /**
      * Calculates the net (Income-Expenses), using upper bound amount for variable statements.  
      * @return the net dollar amount
