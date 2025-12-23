@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class Driver {
     public static List<Budget> budgets = new ArrayList<>();
     public static final String sep = "===========================================";
+    public static Scanner in = new Scanner(System.in);
     public static void main(String args[]) throws SomethingWentWrongException {
         int choice;
-
         for (;;) {
             displayBudgets();
             choice = getIntInput("Choose by typing a number: ",-1,budgets.size());
@@ -73,6 +73,7 @@ public class Driver {
             
         }
         System.out.println("Bye!");
+        in.close();
     }
     public static void displayBudgetOptions() {
         System.out.println(sep+"\n-1. Back\n0. Display Statements");
@@ -86,12 +87,10 @@ public class Driver {
     }
     public static String getStringInput(String prompt) {
         System.out.print(prompt);
-        Scanner in = new Scanner(System.in);
         String result=in.nextLine();
         return result;
     }
     public static int getIntInput(String prompt, int low, int high) {
-        Scanner in = new Scanner(System.in);
         System.out.print(prompt);
         int value=-1;
         boolean isValid = false;
@@ -108,7 +107,6 @@ public class Driver {
         return value;
     }
     public static double getDoubleInput(String prompt, double low, double high) {
-        Scanner in = new Scanner(System.in);
         System.out.print(prompt);
         double value=-1.0;
         boolean isValid = false;
