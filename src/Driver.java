@@ -54,7 +54,7 @@ public class Driver {
                     
 
                     // fixed or variable
-                    choice=getIntInput("Is your statement:\n 0. fixed\n 1. variable", 0, 1);
+                    choice=getIntInput("Is your statement:\n 0. fixed\n 1. variable\n", 0, 1);
                     Statement newStatement;
                     if (choice==0) { // fixed
                         double amount = getDoubleInput("Enter the amount paid every period: ", 0, 100_000_000_000_000.0);
