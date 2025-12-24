@@ -11,7 +11,7 @@ public class Driver {
     public static Scanner in = new Scanner(System.in);
     public static void main(String args[]) throws SomethingWentWrongException {
         int choice;
-        for (;;) {
+        for (;;) { 
             displayBudgets();
             choice = getIntInput("Choose by typing a number: ",-1,budgets.size());
             int choice1=choice;
