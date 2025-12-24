@@ -42,7 +42,19 @@ public class Budget {
      * @param s - the statement to be added
      */
     public void add(Statement s) {statements.add(s);}
-    
+    /**
+     * Removes and returns the first statement with a matching name
+     * @param name - the statement name to remove
+     * @return the removed statement, or null if not found
+     */
+    public Statement remove(String name) {
+        int index=-1;
+        for (int i=0; i<statements.size(); i++) {
+            if (statements.get(i).getName().equals(name)) {index=i; break;}
+        }
+        if (index==-1) return null;
+        return statements.remove(index);
+    }
     /**
      * Creates a new Budget object that adjusts all of the statements
      * to the passed in period. ex: $200/month --> $2400/year
