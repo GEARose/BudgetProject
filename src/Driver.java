@@ -46,7 +46,7 @@ public class Driver implements Serializable {
             else for (;;) { //choose a budget
                 Budget boi = budgets.get(choice1 - 3); // budget of interest
                 displayBudgetOptions();
-                choice = getIntInput("Choose by typing a number: ", -1, 1);
+                choice = getIntInput("Choose by typing a number: ", -1, 3);
                 if (choice==-1) break; // back
                 else if (choice==0) System.out.println(boi); // display statements
                 else if (choice==1) { // add a new statement
@@ -92,6 +92,15 @@ public class Driver implements Serializable {
                     System.out.println("Statement successfully created!");
                     System.out.println(newStatement);
                 }
+                else if (choice==2) { // edit a statement
+                    // TODO
+                    System.out.println("Coming soon...");
+                }
+                else if (choice==3) { // delete a statement
+                    String name = getStringInput("Name of the statement to delete: ");
+                    if (deleteStatement(boi, name)) System.out.println("Successfullly Deleted");
+                    else System.out.println("Not found");
+                }
             }
             
         }
@@ -111,9 +120,15 @@ public class Driver implements Serializable {
         } catch (ClassNotFoundException e) {e.printStackTrace();}
         return null;
     }
+    public static boolean deleteStatement(Budget b,String name) {
+        Statement s = b.remove(name);
+        if (s==null) return false;
+        return true;
+    }
     public static void displayBudgetOptions() {
         System.out.println(sep+"\n-1. Back\n0. Display Statements");
-        System.out.println("1. Add a new Statement");
+        System.out.println("1. Add a new Statement\n2. Edit a Statement");
+        System.out.println("3. Delete a Statement");
     }
     public static void displayBudgets() {
         System.out.println(sep+"\n-1. Exit program\n0. Create new Budget");

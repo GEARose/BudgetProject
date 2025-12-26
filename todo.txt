@@ -1,20 +1,6 @@
 Budgeting tool:
-    ToThink:
-        how to handle variable statements
-    Looks at how much each expense is, how much you need each month
-    Lets you add and remove expenses easily
-        Fixed Expenses + Variable Expenses
-    Classes:
-        class VariableStatement extends Statement
-            lower limit, upper limit
-            Constructor that lets you pass in a Variable Statement object and make a copy
-        class Budget
-            Constructor that lets you pass in a Budget object and make a copy
-            List<Statement> statements
-            double net()
-            Analysis methods
-                percents
-                Show how much a Statement is over different periods (e.g.,weeks)
-    Driver:
-        Save/Load features
-        "What-If" mode that doesn't save changes
+    Terminal Driver:
+        add a feature to edit statements from budgets
+        add a feature to delete/edit budgets
+    Graphics:
+        Later
