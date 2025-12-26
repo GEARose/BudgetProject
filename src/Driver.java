@@ -1,27 +1,50 @@
 package src;
 import src.logic.*;
 import java.util.List;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.InputMismatchException;
 
-public class Driver {
+public class Driver implements Serializable {
     public static List<Budget> budgets = new ArrayList<>();
     public static final String sep = "===========================================";
-    public static Scanner in = new Scanner(System.in);
+    public static transient Scanner in = new Scanner(System.in);
     public static void main(String args[]) throws SomethingWentWrongException {
         int choice;
         for (;;) { 
             displayBudgets();
-            choice = getIntInput("Choose by typing a number: ",-1,budgets.size());
+            choice = getIntInput("Choose by typing a number: ",-1,budgets.size()+2);
             int choice1=choice;
             if (choice==-1) break; // exit
             else if (choice==0) { // make a new Budget
                 String name = getStringInput("Name the new Budget: ");
                 budgets.add(new Budget(name));
             }
+            else if (choice==1) { // save
+                System.out.println("Saving...");
+                try (FileOutputStream f = new FileOutputStream("BudgetSave.txt");
+                    ObjectOutputStream out = new ObjectOutputStream(f);) {
+                    writeToFile(out);
+                } catch (IOException e) {e.printStackTrace();}
+                System.out.println("Successfully Saved.");
+            }
+            else if (choice==2) { // load
+                System.out.println("Loading...");
+                try {
+                    budgets = readFile("BudgetSave.txt");
+                    System.out.println("Successfully Loaded");
+                } catch (IOException e) {
+                    System.err.println("File not found!");
+                }                
+            }
             else for (;;) { //choose a budget
-                Budget boi = budgets.get(choice1 - 1); // budget of interest
+                Budget boi = budgets.get(choice1 - 3); // budget of interest
                 displayBudgetOptions();
                 choice = getIntInput("Choose by typing a number: ", -1, 1);
                 if (choice==-1) break; // back
@@ -75,14 +98,28 @@ public class Driver {
         System.out.println("Bye!");
         in.close();
     }
+    private static void writeToFile(ObjectOutputStream out) throws IOException {
+        out.writeObject(budgets);
+        out.close();
+    }
+    private static List<Budget> readFile(String fileName) throws IOException {
+        try (FileInputStream in = new FileInputStream(fileName);
+            ObjectInputStream o = new ObjectInputStream(in)) {
+                @SuppressWarnings("unchecked")
+                List<Budget> l = (ArrayList<Budget>) o.readObject();
+                return l;
+        } catch (ClassNotFoundException e) {e.printStackTrace();}
+        return null;
+    }
     public static void displayBudgetOptions() {
         System.out.println(sep+"\n-1. Back\n0. Display Statements");
         System.out.println("1. Add a new Statement");
     }
     public static void displayBudgets() {
         System.out.println(sep+"\n-1. Exit program\n0. Create new Budget");
+        System.out.println("1. Save\n2. Load");
         for (int i=0; i<budgets.size(); i++) {
-            System.out.println(i+1+". "+budgets.get(i).getName());
+            System.out.println(i+3+". "+budgets.get(i).getName());
         }
     }
     public static String getStringInput(String prompt) {
@@ -104,6 +141,7 @@ public class Driver {
                 in.nextLine();
             }
         } while (!isValid);
+        in.nextLine();
         return value;
     }
     public static double getDoubleInput(String prompt, double low, double high) {
@@ -120,6 +158,7 @@ public class Driver {
                 in.nextLine();
             }
         } while (!isValid);
+        in.nextLine();
         return value;
     }
 }

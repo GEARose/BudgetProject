@@ -1,9 +1,12 @@
 package src.logic;
+
+import java.io.Serializable;
+
 /**
  * An abstract class for income/expense statements.
  * FixedStatement and VariableStatement inherit from this class
  */
-public abstract class Statement {
+public abstract class Statement implements Serializable {
     /**Constants for periods*/
     public static final double YEAR = 365.25;
     public static final double QUARTER = 365.25/4.0;

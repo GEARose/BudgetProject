@@ -1,12 +1,13 @@
 package src.logic;
 
 import java.util.List;
+import java.io.Serializable;
 import java.util.ArrayList;
 /**
  * A collection of Statement objects.
  * Includes utility methods.
  */
-public class Budget {
+public class Budget implements Serializable {
     private String name;
     private List<Statement> statements;
 
