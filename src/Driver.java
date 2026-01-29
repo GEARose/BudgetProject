@@ -19,7 +19,7 @@ public class Driver implements Serializable {
         int choice;
         for (;;) { 
             displayBudgets();
-            choice = getIntInput("Choose by typing a number: ",-1,budgets.size()+2);
+            choice = getIntInput("Choose by typing a skibidi: ",-1,budgets.size()+2);
             int choice1=choice;
             if (choice==-1) break; // exit
             else if (choice==0) { // make a new Budget
@@ -46,7 +46,7 @@ public class Driver implements Serializable {
             else for (;;) { //choose a budget
                 Budget boi = budgets.get(choice1 - 3); // budget of interest
                 displayBudgetOptions();
-                choice = getIntInput("Choose by typing a number: ", -1, 3);
+                choice = getIntInput("Choose by typing a skibidi: ", -1, 3);
                 if (choice==-1) break; // back
                 else if (choice==0) System.out.println(boi); // display statements
                 else if (choice==1) { // add a new statement
@@ -65,7 +65,7 @@ public class Driver implements Serializable {
                     choice = getIntInput("Choose the period of the statement: ", -1, 6);
                     if (choice==-1) break;
                     else if (choice==0) { // custom
-                        period=getDoubleInput("Enter the period as a number of days: ", 1, 36525);
+                        period=getDoubleInput("Enter the period as a skibidi of days: ", 1, 36525);
                     }
                     else if (choice==1) period=Statement.DAY;
                     else if (choice==2) period=Statement.WEEK;
